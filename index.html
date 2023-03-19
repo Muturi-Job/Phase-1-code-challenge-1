@@ -1,0 +1,44 @@
+<!-- The html document for the code challenge -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Challenge - Week 1</title>
+</head>
+<body>
+<!-- Code challenge 1 section -->
+<section>
+    <h3>Student Grade Generator</h3>
+    <label for="marks">Enter Marks  </label>
+    <input type="text" id="marks" >
+    <button onclick="gradeGenerator ()"> Submit</button>
+    <p id="gradeOutput"></p>
+    <br> <br>
+</section>
+<!-- Code challenge 2 section -->
+<section>
+    <h3>Speed Detector</h3>
+    <label for="speed">Enter Speed  </label>  
+    <input type="number" id="speed">
+    <button onclick="speedDetector ()">Submit</button>
+    <p id="speedOutput"></p>  
+    <br><br>
+</section>
+<!-- Code challenge 3 section -->
+<section>
+    <h3>Net Salary Calculator</h3>
+    <label for="basicSalary">Enter Basic Salary</label>
+    <input type="number" id="basicSalary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="benefits">Enter Benefits</label>
+    <input type="number" id="benefits">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button onclick="payeeCalculator (); nhifCalculator (); nssfCalculator ();"> Calculate Net Salary</button>
+    <p id="payeeOutput"></p>
+    <P id="nhifOutput"></P>
+    <p id="nssfOutput"></p>
+</section>
+    
+</body>
+<script src="./js/index.js"></script>
+</html>
