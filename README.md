@@ -30,5 +30,4 @@ Click on the relevant calculation button to get the results.
 Credits
 This project was developed by Muturi-Job as part of a learning exercise.
 
-License
-This project is licensed under the MIT License - see the LICENSE file for details..
+
