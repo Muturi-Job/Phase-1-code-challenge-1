@@ -16,10 +16,12 @@ Salary Calculator
 Takes in the basic salary and benefits of an employee as input.
 Calculates the gross salary, NSSF, NHIF, and payee.
 Deductions are made based on NSSF, NHIF, and payee to arrive at the net salary.
+
 Technologies Used
 JavaScript
 HTML
 CSS
+
 How to Use
 Clone the repository to your local machine using git clone.
 Open the index.html file in your web browser.
