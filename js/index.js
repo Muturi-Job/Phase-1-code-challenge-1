@@ -56,50 +56,28 @@ output.innerHTML = speed
 //Gets the basic salary and benefits as the inputs
 //Calculates the PAYEE ,NSSF deductions ,gross salary and net salary
 
-//Get the values of the basic salary and benefits and add to get gross salary
-let benefits = document.getElementById("benefits").value
-let basicSalary = document.getElementById("basicSalary").value
-//validation
-if (benefits === undefined || isNaN(benefits)){
-    return alert( "Invalid benefits")
-}
-if (basicSalary === undefined || isNaN(basicSalary)){
-    return alert( "Invalid salary")
-}
-//gets the gross salary
-let grossSalary = benefits + basicSalary
-let payee;
-//Calculate the amount of PAYEE
-function payeeCalculator () {
-    if (grossSalary <= 24000){
-        payee = 0.01 * grossSalary;
-    }
-    else if (grossSalary >24000 && grossSalary <=32333){
-        payee = 0.25 * grossSalary;
-    }
-    else {
-        payee = 0.3 * grossSalary;
-    }
-//Returns the output in HTMl
-let output = document.getElementById("payeeOutput")
-output.innerHTML = 'Total PAYEE is ' +payee + 'Ksh'
-}
-//Calculate the NHIF deduction
-    let nhif;
-    function nhifCalculator () {
-    if (grossSalary <= 5999 && grossSalary >0) {
-        nhif = 150;
-    }
-    else if (grossSalary > 5999 && grossSalary <= 7999){
-        nhif= 300;
-    }
-    else if (grossSalary > 7999 && grossSalary <= 11999) {
-        nhif = 400;
-    }
-    else if (grossSalary > 11999 && grossSalary <= 14999) {
-        nhif = 500;
-    }
-    else if (grossSalary >14999 && grossSalary <= 19999) {
+function calculateSalary() {
+   
+   
+    // Get the input values from the user
+    const basicSalary = parseInt(document.getElementById("basicSalary").value);
+    const benefits = parseInt(document.getElementById("benefits").value);
+//Validation
+
+    // Calculate the gross salary, NSSF, NHIF, and payee
+    const grossSalary = basicSalary + benefits;
+    const nssf = 0.06 * grossSalary;
+    
+    let nhif = 0;
+    if (grossSalary <= 5999) {
+      nhif = 150;
+    } else if (grossSalary >= 6000 && grossSalary <= 7999) {
+      nhif = 300;
+    } else if (grossSalary >= 8000 && grossSalary <= 11999) {
+      nhif = 400;
+    } else if (grossSalary >= 12000 && grossSalary <= 14999) {
+      nhif = 500;
+    } else if (grossSalary >14999 && grossSalary <= 19999) {
         nhif = 600;
     }
     else if (grossSalary > 19999 && grossSalary <= 24999) {
@@ -138,21 +116,26 @@ output.innerHTML = 'Total PAYEE is ' +payee + 'Ksh'
     else{
         nhif = 1700;
     }
-//Returns the output in HTML
-    let output = document.getElementById("nhifOutput")
-    output.innerHTML = `NHIF contribution is ` + nhif + 'Ksh'
-}
-// Calculate NSSF contribution
-let nssf;
-function nssfCalculator () {
-    nssf = 0.06 * grossSalary;
-//Returns the output in HTML
-    let output = document.getElementById("nssfOutput")
-    return output.innerHTML = 'NSSF Contribution is ' + nssf + 'Ksh'
-}
 
-netSalary =  Math.abs(grossSalary-(nhif+nssf+payee))
-return `Your net salary is : ${netSalary}`
+    let payee = 0;
+    if (grossSalary <= 24000) {
+      payee = grossSalary * 0.1;
+    } else if (grossSalary > 24000 && grossSalary <= 32333) {
+      payee = grossSalary * 0.25;
+    } else {
+      payee = grossSalary * 0.3;
+    }
 
+   
+  
 
+    // Calculate the net salary
+    const netSalary = grossSalary - nssf - nhif - payee;
 
+    // Display the results to the user
+    document.getElementById("grossSalary").innerHTML = `Gross Salary is Ksh ${grossSalary}`;
+    document.getElementById("nssfContribution").innerHTMl = `NSSF contribution is Ksh ${nssf}`;
+    document.getElementById("nhif").innerHTML = `NHIF contribution is Ksh ${nhif}`;
+    document.getElementById("payee").innerHTML = `Total PAYEE is Ksh ${payee}`;
+    document.getElementById("netSalary").innerHTML = `Net Salary is Ksh ${netSalary}`;
+  }
